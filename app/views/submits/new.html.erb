@@ -1,0 +1,41 @@
+<%
+    if @submit_id
+      url = {action: :update, id: @submit_id}
+      method = :patch
+    else
+      url = {action: :create}
+      method = :post
+    end
+%>
+
+<%= form_for @input, url: url, method: method, html: {class: "form-horizontal"} do |f| %>
+
+    <% @input.items.each do |item| %>
+        <div class="row form-group">
+            <div class="col-md-2 text-right">
+                <b><%= item.send("name") %></b>
+            </div>
+            <div class="col-md-7 ">
+                <% case item.typ %>
+                <% when Item::TYP_STING %>
+                    <%= f.text_field "item_#{item.id}", class: 'form-control' %>
+                <% when Item::TYP_NUMBER %>
+                    <%= f.number_field "item_#{item.id}", class: 'form-control' %>
+                <% when Item::TYP_DATETIME %>
+                    <%= f.datetime_field "item_#{item.id}", data: {:date_format => 'YYYY/MM/DD hh:mm'}, :class => 'form-control' %>
+                <% end %>
+            </div>
+            <div class="col-md-3">
+                <% if item.presence %>
+                    <%= content_tag(:span, glyph(:exclamation_sign) + " 必須", {class: "label label-warning"}) %>
+                <% end %>
+                <%= content_tag(:span, f.errors_for("item_#{item.id}"), {class: 'text-danger'}) if f.errors_on?("item_#{item.id}") %>
+            </div>
+        </div>
+    <% end %>
+    <div class="row">
+        <div class="col-md-offset-7 col-md-2">
+            <%= f.submit '保存', class: "form-control" %>
+        </div>
+    </div>
+<% end %>

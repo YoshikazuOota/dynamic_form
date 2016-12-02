@@ -1,0 +1,24 @@
+<% @submit.values.each do |value| %>
+    <div class="row form-group">
+        <div class="col-md-2 text-right">
+            <b><%= value.item.send("name") %></b>
+        </div>
+        <div class="col-md-7 ">
+            <% case value.item.typ %>
+            <% when Item::TYP_STING %>
+                <%= value.str %>
+            <% when Item::TYP_NUMBER %>
+                <%= value.int %>
+            <% when Item::TYP_DATETIME %>
+                <%= value.datetime%>
+            <% end %>
+        </div>
+        <div class="col-md-3">
+            <% if value.item.presence %>
+                <%= content_tag(:span, glyph(:exclamation_sign) + " 必須", {class: "label label-warning"}) %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= link_to '戻る', {action: :index}, :class => 'btn btn-primary' %>

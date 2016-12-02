@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  submit_id: 1
+  item_id: 1
+  str: MyText
+  datetime: 2016-11-23 12:51:08
+  int: 1
+
+two:
+  submit_id: 1
+  item_id: 1
+  str: MyText
+  datetime: 2016-11-23 12:51:08
+  int: 1

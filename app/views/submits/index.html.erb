@@ -1,0 +1,25 @@
+<div class="page-header">
+    <h1>入力フォームと入力履歴</h1>
+</div>
+<%= link_to '入力項目設定画面へ', {controller: :items}, :class => 'btn btn-primary', style: "color: #fff;" %>
+<%= link_to 'New', {action: :new}, :class => 'btn btn-primary', style: "color: #fff;" %>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @submits.each do |submit| %>
+        <tr>
+            <td><%= submit.id %></td>
+            <td>
+                <%= link_to '表示', {action: :show, id: submit.id}, :class => 'btn btn-default btn-xs' %>
+                <%= link_to '編集', {action: :edit, id: submit.id}, :class => 'btn btn-default btn-xs' %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+

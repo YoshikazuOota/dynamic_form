@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  typ: 1
+  presence: false
+  only_integer: false
+  format_with: MyString
+
+two:
+  name: MyString
+  typ: 1
+  presence: false
+  only_integer: false
+  format_with: MyString
