@@ -7,3 +7,6 @@
 ```
 rails db:seed
 ```
+
+# URL
+http://localhost:3000/submits
